@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.back {
+  background: url("/images/bg-sidebar-mobile.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 13rem;
+}
+
+@media (min-width: 568px) {
+  .back {
+    background: url("/images/bg-sidebar-desktop.svg");
+    height: 97%;
+    width: 23rem;
+    background-position: center;
+    background-size: cover;
+    border-radius: 0.75rem;
+    background-repeat: no-repeat;
+  }
+}
