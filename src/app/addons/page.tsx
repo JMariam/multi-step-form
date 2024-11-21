@@ -1,20 +1,40 @@
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 
+const Addonss = [
+  {
+    title: "Onliine services",
+    text: "Access to multiple games",
+    priceM: "$1/mo",
+    priceY: "$10/mo",
+  },
+  {
+    title: "Larger storage",
+    text: "Etra 1TB od cloud save",
+    priceM: "$2/mo",
+    priceY: "$20/mo",
+  },
+  {
+    title: "Customizable profile",
+    text: "Custom theme on your profile",
+    priceM: "$2/mo",
+    priceY: "$20/mo",
+  }
+];
 export default function Plans() {
   return (
     <div className="">
-      <div className="bg-Magnolia h-[47rem] lg:h-[100vh] lg:flex lg:items-center lg:justify-center">
-        <div className="lg:bg-white lg:shadow-xl lg:px-2 lg:rounded-xl lg:flex lg:items-center  lg:justify-center xl:w-[60%] lg:h-[60%] xl:h-[80%]">
+      <div className="bg-Magnolia h-fit lg:h-[100vh] lg:flex lg:items-center lg:justify-center">
+        <div className="lg:bg-white lg:shadow-xl lg:p-2 lg:rounded-xl lg:flex lg:items-center  lg:justify-center xl:w-[60%] lg:h-[60%] xl:h-[80%]">
           <Navbar />
           <div className="bg-white w-[90%] mx-auto shadow-Light-gray shadow-xl lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 xl:px-20 lg:px-">
-            <p className="font-[700] text-[24px] text-black">
-              Pick add-ons
-            </p>
+            <p className="font-[700] text-[24px] text-black">Pick add-ons</p>
             <p className="text-[16px] text-Cool-gray my-3">
               Add-ons help enhamce your gaming experience.
             </p>
-            <div className="flex flex-col gap-4 mt-4"></div>
+            <div className="flex flex-col gap-4 mt-4">
+
+            </div>
             <div className="lg:flex hidden mt-6 items-center justify-between">
               <Link href="/plans" className="text-[12px] text-Cool-gray">
                 Go back

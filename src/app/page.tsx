@@ -1,65 +1,52 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
 import "./globals.css";
-import Link from "next/link";
+import React, { useState } from "react";
+import FStep from "../components/Step1";
+import SStep from "../components/Step2";
+import TStep from "../components/Step3";
 import Navbar from "@/components/Navbar";
+import { Step1Data, Step2Data } from "./schema";
 
-export default function Home() {
+interface FormData extends Step1Data, Step2Data {}
+
+const Home: React.FC = () => {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState<Partial<FormData>>({});
+
+  const handleNext = (data: Partial<FormData>) => {
+    setFormData((prev) => ({ ...prev, ...data }));
+    setStep((prev) => prev + 1);
+  };
+
+  const handleBack = () => setStep((prev) => prev - 1);
+
   return (
-    <div className="">
-      <div className="bg-Magnolia h-[47rem] lg:h-[100vh] lg:flex lg:items-center lg:justify-center">
-        <div className="lg:bg-white lg:shadow-xl lg:px-2 lg:rounded-xl lg:flex lg:items-center  lg:justify-center xl:w-[60%] lg:h-[60%] xl:h-[80%]">
-          <Navbar />
-          <div className="bg-white w-[90%] mx-auto shadow-Light-gray shadow-xl lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 xl:px-20 lg:px-">
-            <p className="font-[700] text-[24px] text-black">Personal info</p>
-            <p className="text-[16px] text-Cool-gray my-3">
-              Please provide your name, email address and phone number.
-            </p>
-            <div className="flex flex-col gap-4 mt-4">
-              <div className="flex flex-col gap-1">
-                <label htmlFor="name" className="font-bold">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g Stephan King"
-                  className="outline-none rounded border border-Light-gray text-Cool-gray placeholder:text-Cool-gray py-2 px-3"
-                />
+    <div>
+      <div className="bg-Magnolia h-fit lg:h-[100vh] lg:flex lg:items-center lg:justify-center">
+        <div className="lg:bg-white lg:shadow-xl lg:p-3 lg:rounded-xl lg:flex lg:items-center lg:justify-center xl:w-[55%] lg:h-[60%] xl:h-fit">
+        <Navbar currentStep={step} />
+          <div className="lg:w-[65%]">
+            {step === 1 && <FStep onNext={handleNext} />}
+            {step === 2 && <SStep onNext={handleNext} onBack={handleBack} />}
+            {step === 3 && <TStep onNext={handleNext} onBack={handleBack} />}
+            {step === 4 && (
+              <div>
+                <h2>Summary</h2>
+                <p>Name: {formData.name}</p>
+                <p>Email: {formData.email}</p>
+                <p>Number: {formData.number}</p>
+                <p>
+                  Plan: {formData.plan} ({formData.price})
+                </p>
+                <button onClick={handleBack}>Back</button>
+                <button onClick={() => alert("Form Submitted!")}>Submit</button>
               </div>
-              <div className="flex flex-col gap-1">
-                <label htmlFor="name" className="font-bold">
-                  Name
-                </label>
-                <input
-                  type="email"
-                  placeholder="e.g stephanking@lorem.com"
-                  className="outline-none rounded border border-Light-gray text-Cool-gray placeholder:text-Cool-gray py-2 px-3"
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label htmlFor="name" className="font-bold">
-                  Name
-                </label>
-                <input
-                  type="number"
-                  placeholder="e.g =1 234 567 890"
-                  className="outline-none rounded border border-Light-gray text-Cool-gray placeholder:text-Cool-gray py-2 px-3"
-                />
-              </div>
-            </div>
-            <div className="lg:flex hidden mt-6 items-center justify-end">
-              <Link href="/plans" className="w-fit bg-Marine-blue cursor-pointer text-white p-2 text-[14px] rounded">
-                Next Step
-              </Link>
-            </div>
+            )}
           </div>
         </div>
       </div>
-      <div className="lg:hidden flex my-[11.5%] items-center justify-end w-[90%] m-auto cursor-pointer">
-        <Link href="/plans" className="w-fit bg-Marine-blue text-white py-3 px-4 rounded">
-          Next Step
-        </Link>
-      </div>
     </div>
   );
-}
+};
+
+export default Home;

@@ -13,8 +13,8 @@
 @media (min-width: 568px) {
   .back {
     background: url("/images/bg-sidebar-desktop.svg");
-    height: 97%;
-    width: 23rem;
+    height: 32rem;
+    width: 35%;
     background-position: center;
     background-size: cover;
     border-radius: 0.75rem;
