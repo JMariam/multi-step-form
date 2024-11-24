@@ -4,13 +4,15 @@ import { z } from "zod";
 export const step1Schema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
-  number: z.string().min(8, "Invalid phone number"),
+  number: z.string().min(1, "Invalid phone number"),
 });
 
 // Schema for Step 2
 export const step2Schema = z.object({
   plan: z.string().min(1, "Please select a plan"),
   price: z.string(),
+  billingType: z.enum(["monthly", "yearly"]),
+  
 });
 
 export type Step1Data = z.infer<typeof step1Schema>;

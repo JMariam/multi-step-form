@@ -14,33 +14,35 @@ const plans = [
     img: "/images/icon-arcade.svg",
     title: "Arcade",
     priceM: "9$/mo",
-    priceY: "90$/mo",
+    priceY: "90$/yr",
     text: "2 months free",
   },
   {
     img: "/images/icon-advanced.svg",
     title: "Advanced",
     priceM: "12$/mo",
-    priceY: "120$/mo",
+    priceY: "120$/yr",
     text: "2 months free",
   },
   {
     img: "/images/icon-pro.svg",
     title: "Pro",
     priceM: "15$/mo",
-    priceY: "150$/mo",
+    priceY: "150$/yr",
     text: "2 months free",
   },
 ];
 
 const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
-  const [selected, setSelected] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<{
     title: string;
     price: string;
+    billingType: "monthly" | "yearly";
   } | null>(null);
 
-  const toggleSwitch = () => setSelected(!selected);
+  const [billingType, setBillingType] = useState<"monthly" | "yearly">(
+    "monthly"
+  );
 
   const handleNext = () => {
     if (!selectedPlan) {
@@ -50,6 +52,7 @@ const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
     const result = step2Schema.safeParse({
       plan: selectedPlan.title,
       price: selectedPlan.price,
+      billingType: selectedPlan.billingType, // Validated here
     });
     if (!result.success) {
       alert(result.error.errors[0].message);
@@ -58,6 +61,7 @@ const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
     onNext({
       plan: selectedPlan.title,
       price: selectedPlan.price,
+      billingType: selectedPlan.billingType,
     });
   };
 
@@ -67,65 +71,49 @@ const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
       <p className="text-[16px] text-Cool-gray">
         You have the option of monthly or yearly billing.
       </p>
+
       <div className="flex flex-col gap-8">
-        {selected ? (
-          <div className="flex flex-col lg:flex-row lg:justify-between gap-6 mt-8">
-            {plans.map((plan) => (
-              <div
-                key={plan.title}
-                onClick={() =>
-                  setSelectedPlan({ title: plan.title, price: plan.priceY })
-                } // Set the selected plan on click
-                className={`flex lg:flex-col cursor-pointer items-center lg:items-start lg:px-4 gap-4 lg:w-32 px-4 py-2 rounded-lg border border-Light-gray ${
-                  selectedPlan?.title === plan.title
-                    ? "border-Purplish-blue bg-Alabaster"
-                    : "border-Light-gray bg-transparent"
-                }`}
-              >
-                <img src={plan.img} alt="" className="w-12 lg:w-9 lg:mb-4" />
-                <div className="">
-                  <p className="text-[18px] lg:text-[14px] text-black font-bold">
-                    {plan.title}
-                  </p>
-                  <p className="text-[16px] lg:text-[13px] py- text-Cool-gray">
-                    {plan.priceY}
-                  </p>
-                  <p className="text-black font-[500] text-[12px] ">
-                    {plan.text}
-                  </p>
-                </div>
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-6 mt-8">
+          {plans.map((plan) => (
+            <div
+              key={plan.title}
+              onClick={() =>
+                setSelectedPlan({
+                  title: plan.title,
+                  price: billingType === "monthly" ? plan.priceM : plan.priceY,
+                  billingType: billingType,
+                })
+              } // Set the selected plan on click
+              className={`flex lg:flex-col cursor-pointer items-center lg:items-start lg:px-4 gap-4 lg:w-32 px-4 py-2 rounded-lg border border-Light-gray ${
+                selectedPlan?.title === plan.title
+                  ? "border-Purplish-blue bg-Alabaster"
+                  : "border-Light-gray bg-transparent"
+              }`}
+            >
+              <img src={plan.img} alt="" className="w-12 lg:w-9 lg:mb-4" />
+              <div className="">
+                <p className="text-[18px] lg:text-[14px] text-black font-bold">
+                  {plan.title}
+                </p>
+                <p className="text-[16px] lg:text-[13px] py- text-Cool-gray">
+                  {billingType === "monthly" ? plan.priceM : plan.priceY}
+                </p>
+                <p className="text-black font-[500] text-[12px] ">
+                  {billingType === "yearly" ? plan.text : ""}
+                </p>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col lg:flex-row lg:justify-between gap-6 mt-8">
-            {plans.map((plan) => (
-              <div
-                key={plan.title}
-                onClick={() =>
-                  setSelectedPlan({ title: plan.title, price: plan.priceM })
-                } // Set the selected plan on click
-                className={`flex lg:flex-col cursor-pointer items-center lg:items-start gap-4 px-4 py-2 lg:py-4 lg:w-32 rounded-lg border border-Light-gray ${
-                  selectedPlan?.title === plan.title
-                    ? "border-Purplish-blue bg-Alabaster"
-                    : "border-Light-gray bg-transparent"
-                }`}
-              >
-                <img src={plan.img} alt="" className="w-12 lg:w-9 lg:mb-4" />
-                <div className="">
-                  <p className="text-[18px] lg:text-[14px] text-black font-bold">
-                    {plan.title}
-                  </p>
-                  <p className="text-[16px] lg:text-[13px] py- text-Cool-gray">
-                    {plan.priceM}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-        <Toggle selected={selected} toggleSwitch={toggleSwitch} />
-        <div className="lg:flex hidden mt-16 items-center justify-between">
+            </div>
+          ))}
+        </div>
+        <Toggle
+          billingType={billingType}
+          toggleSwitch={() =>
+            setBillingType((prev) =>
+              prev === "monthly" ? "yearly" : "monthly"
+            )
+          }
+        />
+        <div className="flex mt-16 items-center justify-between">
           <button onClick={onBack} className="text-[12px] text-Cool-gray">
             Go Back
           </button>
