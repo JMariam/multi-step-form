@@ -1,11 +1,14 @@
 "use client";
 
 interface ToggleSwitchProps {
-  billingType: "monthly" | "yearly"; // Restrict to valid billing types
-  toggleSwitch: () => void; // Function to toggle between billing types
+  billingType: "monthly" | "yearly";
+  toggleSwitch: () => void;
 }
 
-export default function Toggle({ billingType, toggleSwitch }: ToggleSwitchProps) {
+export default function Toggle({
+  billingType,
+  toggleSwitch,
+}: ToggleSwitchProps) {
   return (
     <div className="bg-Alabaster rounded-lg flex items-center gap-4 p-3 w-full justify-center">
       {/* Monthly Label */}
@@ -21,7 +24,7 @@ export default function Toggle({ billingType, toggleSwitch }: ToggleSwitchProps)
 
       {/* Toggle Switch */}
       <div
-        onClick={toggleSwitch} // Call toggleSwitch to change billing type
+        onClick={toggleSwitch}
         className="relative w-12 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors bg-Marine-blue"
       >
         <div
@@ -44,4 +47,3 @@ export default function Toggle({ billingType, toggleSwitch }: ToggleSwitchProps)
     </div>
   );
 }
-

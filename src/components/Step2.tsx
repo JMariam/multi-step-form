@@ -52,7 +52,7 @@ const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
     const result = step2Schema.safeParse({
       plan: selectedPlan.title,
       price: selectedPlan.price,
-      billingType: selectedPlan.billingType, // Validated here
+      billingType: selectedPlan.billingType, 
     });
     if (!result.success) {
       alert(result.error.errors[0].message);
@@ -83,7 +83,7 @@ const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
                   price: billingType === "monthly" ? plan.priceM : plan.priceY,
                   billingType: billingType,
                 })
-              } // Set the selected plan on click
+              } 
               className={`flex lg:flex-col cursor-pointer items-center lg:items-start lg:px-4 gap-4 lg:w-32 px-4 py-2 rounded-lg border border-Light-gray ${
                 selectedPlan?.title === plan.title
                   ? "border-Purplish-blue bg-Alabaster"
