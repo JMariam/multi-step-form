@@ -89,7 +89,7 @@ const TStep: React.FC<AddOnsProps> = ({ onNext, onBack, isYearly }) => {
                   <h3 className="text-[18px] lg:text-[14px] text-black font-bold">
                     {addOn.name}
                   </h3>
-                  <p className="text-[16px] lg:text-[13px] py- text-Cool-gray">
+                  <p className="text-[14px] lg:text-[13px] py- text-Cool-gray">
                     {addOn.description}
                   </p>
                 </div>

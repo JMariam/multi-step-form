@@ -49,7 +49,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <div className="bg-Magnolia h-[100vh] lg:flex lg:items-center lg:justify-center">
+      <div className="bg-Magnolia h-fit lg:h-[100vh] lg:flex lg:items-center lg:justify-center">
         <div className="lg:bg-white lg:shadow-md lg:p-3 lg:rounded-xl lg:flex lg:items-center lg:justify-center xl:w-[55%] lg:h-[60%] xl:h-fit">
           <Navbar currentStep={step} />
           <div className="lg:w-[65%]">

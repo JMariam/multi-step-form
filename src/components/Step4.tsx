@@ -44,7 +44,7 @@ const FRStep: React.FC<Step4Props> = ({ formData, onBack, calculateTotal }) => {
     );
   }
   return (
-    <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-Light-gray shadow-xl lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 lg:px-10">
+    <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-Light-gray shadow-md lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 lg:px-10">
       <p className="font-[700] text-[24px] text-black">Finishing up</p>
       <p className="text-[16px] text-Cool-gray">
         Double-check everything looks OK before confirming.

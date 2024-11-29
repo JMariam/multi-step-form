@@ -84,7 +84,7 @@ const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
                   billingType: billingType,
                 })
               } 
-              className={`flex lg:flex-col shadow-sm lg:shadow-md cursor-pointer items-center lg:items-start justify-center lg:px-4 gap-4 lg:w-32 px-4 h-[5.5rem] lg:h-[9rem] rounded-lg border border-Light-gray ${
+              className={`flex lg:flex-col shadow-sm lg:shadow-md cursor-pointer items-center lg:items-start lg:justify-center lg:px-4 gap-4 lg:w-32 px-4 h-[5.5rem] lg:h-[9rem] rounded-lg border border-Light-gray ${
                 selectedPlan?.title === plan.title
                   ? "border-Purplish-blue bg-Alabaster"
                   : "border-Light-gray bg-transparent"
