@@ -27,7 +27,7 @@ const FRStep: React.FC<Step4Props> = ({ formData, onBack, calculateTotal }) => {
 
   if (submitted) {
     return (
-      <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-Light-gray shadow-xl lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-16">
+      <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-md lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-16">
         <div className="flex flex-col items-center gap-6">
           <img src="/images/icon-thank-you.svg" alt="" />
           <div className="text-center">
@@ -49,7 +49,7 @@ const FRStep: React.FC<Step4Props> = ({ formData, onBack, calculateTotal }) => {
       <p className="text-[16px] text-Cool-gray">
         Double-check everything looks OK before confirming.
       </p>
-      <div className="bg-Alabaster rounded-2xl p-8 my-6">
+      <div className="bg-Alabaster rounded-2xl shadow-md p-8 my-6">
         <div className="flex justify-between items-center border-b border-slate-400 pb-4 text-[16px]">
           <div>
             <p className="text-black font-bold">

@@ -66,7 +66,7 @@ const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
   };
 
   return (
-    <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-Light-gray shadow-xl lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 lg:px-10">
+    <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-md lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 lg:px-10">
       <p className="font-[700] text-[24px] text-black">Select your plan</p>
       <p className="text-[16px] text-Cool-gray">
         You have the option of monthly or yearly billing.
@@ -84,7 +84,7 @@ const SStep: React.FC<Step2Props> = ({ onNext, onBack }) => {
                   billingType: billingType,
                 })
               } 
-              className={`flex lg:flex-col cursor-pointer items-center lg:items-start lg:px-4 gap-4 lg:w-32 px-4 py-2 rounded-lg border border-Light-gray ${
+              className={`flex lg:flex-col shadow-sm lg:shadow-md cursor-pointer items-center lg:items-start justify-center lg:px-4 gap-4 lg:w-32 px-4 h-[5.5rem] lg:h-[9rem] rounded-lg border border-Light-gray ${
                 selectedPlan?.title === plan.title
                   ? "border-Purplish-blue bg-Alabaster"
                   : "border-Light-gray bg-transparent"

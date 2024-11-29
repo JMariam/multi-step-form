@@ -62,7 +62,7 @@ const TStep: React.FC<AddOnsProps> = ({ onNext, onBack, isYearly }) => {
   };
 
   return (
-    <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-Light-gray shadow-xl lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 lg:px-10">
+    <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-md lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 lg:px-10">
       <p className="font-[700] text-[24px] text-black">Pick add-ons</p>
       <p className="text-[16px] text-Cool-gray">
         Add-ons help enhance your gaming experience.
@@ -72,7 +72,7 @@ const TStep: React.FC<AddOnsProps> = ({ onNext, onBack, isYearly }) => {
           {addOns.map((addOn) => (
             <div
               key={addOn.id}
-              className={`flex items-center justify-between px-4 py-2 rounded-lg border border-Light-gray cursor-pointer ${
+              className={`flex items-center justify-between px-4 py-2 shadow-sm rounded-lg border border-Light-gray cursor-pointer ${
                 selectedAddOns.includes(addOn.id)
                   ? "border-Purplish-blue bg-Alabaster"
                   : "border-Light-gray bg-transparent"

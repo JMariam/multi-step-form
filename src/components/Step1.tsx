@@ -22,7 +22,7 @@ const FStep: React.FC<Step1Props> = ({ onNext }) => {
 
   return (
     <div className="">
-      <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-Light-gray shadow-xl lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 xl:px-10">
+      <div className="bg-white lg:bg-transparent w-[90%] mx-auto shadow-md lg:shadow-none relative -top-[80px] lg:-top-0 rounded-lg px-6 py-8 pb-10 xl:px-10">
         <p className="font-[700] text-[24px] text-black">Personal info</p>
         <p className="text-[16px] text-Cool-gray my-3">
           Please provide your name, email address and phone number.
@@ -48,7 +48,7 @@ const FStep: React.FC<Step1Props> = ({ onNext }) => {
               type="text"
               id="name"
               placeholder="e.g Stephan King"
-              className="outline-none rounded border border-Light-gray text-Cool-gray placeholder:text-Cool-gray py-2 px-3"
+              className="outline-none rounded border border-Light-gray text-gray-500 placeholder:text-Cool-gray placeholder:text-[14px] py-2 px-3"
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -67,7 +67,7 @@ const FStep: React.FC<Step1Props> = ({ onNext }) => {
               type="email"
               id="email"
               placeholder="e.g stephanking@lorem.com"
-              className="outline-none rounded border border-Light-gray text-Cool-gray placeholder:text-Cool-gray py-2 px-3"
+              className="outline-none rounded border border-Light-gray text-gray-500 placeholder:text-Cool-gray placeholder:text-[14px] py-2 px-3"
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -86,7 +86,7 @@ const FStep: React.FC<Step1Props> = ({ onNext }) => {
               type="number"
               id="number"
               placeholder="e.g =1 234 567 890"
-              className="outline-none rounded border border-Light-gray text-Cool-gray placeholder:text-Cool-gray py-2 px-3"
+              className="outline-none rounded border border-Light-gray text-gray-500 placeholder:text-Cool-gray placeholder:text-[14px] py-2 px-3"
             />
           </div>
           <button type="submit" className="flex mt-6 items-center justify-end">
