@@ -72,7 +72,7 @@ const TStep: React.FC<AddOnsProps> = ({ onNext, onBack, isYearly }) => {
           {addOns.map((addOn) => (
             <div
               key={addOn.id}
-              className={`flex items-center justify-between px-4 py-2 shadow-sm rounded-lg border border-Light-gray cursor-pointer ${
+              className={`flex items-center justify-between px-4 py-2 shadow-sm rounded-lg border border-Light-gray ${
                 selectedAddOns.includes(addOn.id)
                   ? "border-Purplish-blue bg-Alabaster"
                   : "border-Light-gray bg-transparent"
@@ -83,7 +83,7 @@ const TStep: React.FC<AddOnsProps> = ({ onNext, onBack, isYearly }) => {
                   type="checkbox"
                   checked={selectedAddOns.includes(addOn.id)}
                   onChange={() => handleToggle(addOn.id)}
-                  className="w-5 h-5"
+                  className="w-5 h-5 cursor-pointer"
                 />
                 <div>
                   <h3 className="text-[18px] lg:text-[14px] text-black font-bold">

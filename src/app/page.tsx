@@ -27,7 +27,12 @@ const Home: React.FC = () => {
     setStep((prev) => prev + 1);
   };
 
+  const handleNavigate = (step: number) => {
+    setStep(step); 
+  };
+
   const handleBack = () => setStep((prev) => prev - 1);
+  const handleBackLast = () => setStep((prev) => prev - 2);
 
   const calculateTotal = () => {
     const planPrice = formData.price
@@ -51,7 +56,7 @@ const Home: React.FC = () => {
     <div>
       <div className="bg-Magnolia h-fit lg:h-[100vh] lg:flex lg:items-center lg:justify-center">
         <div className="lg:bg-white lg:shadow-md lg:p-3 lg:rounded-xl lg:flex lg:items-center lg:justify-center xl:w-[55%] lg:h-[60%] xl:h-fit">
-          <Navbar currentStep={step} />
+          <Navbar currentStep={step} onNavigate={handleNavigate} />
           <div className="lg:w-[65%]">
             {step === 1 && <FStep onNext={handleNext} />}
             {step === 2 && <SStep onNext={handleNext} onBack={handleBack} />}
@@ -69,6 +74,7 @@ const Home: React.FC = () => {
                 formData={formData}
                 calculateTotal={calculateTotal}
                 onBack={handleBack}
+                onBackLast={handleBackLast}
               />
             )}
           </div>

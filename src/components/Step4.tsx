@@ -16,9 +16,10 @@ interface Step4Props {
   };
   calculateTotal: () => string;
   onBack: () => void;
+  onBackLast: () => void;
 }
 
-const FRStep: React.FC<Step4Props> = ({ formData, onBack, calculateTotal }) => {
+const FRStep: React.FC<Step4Props> = ({ formData, onBack, calculateTotal, onBackLast }) => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => {
@@ -56,7 +57,7 @@ const FRStep: React.FC<Step4Props> = ({ formData, onBack, calculateTotal }) => {
               {formData.plan} (
               {formData.billingType === "yearly" ? "Yearly" : "Monthly"})
             </p>
-            <button className="underline text-Cool-gray" onClick={onBack}>
+            <button className="underline text-Cool-gray" onClick={onBackLast}>
               Change
             </button>
           </div>
